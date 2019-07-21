@@ -38,7 +38,7 @@ class MongoLib {
     create(collection, data) {
         return this.connect().then(db => {
             return db.collection(collection).insertOne(data);
-        }).then(result => result.insertedId);
+        }).then(result => result.insertedId).catch(err => console.log("error en mongo", err));
     }
 
     update(collection, id, data) {

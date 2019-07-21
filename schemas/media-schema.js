@@ -1,11 +1,11 @@
 const Joi = require("joi");
 
-const postSchema = {
-    id: Joi.number().required(),
+const myListSchema = {
+    idUser: Joi.string().required(),
     idMedia: Joi.number().required(),
-    type: Joi.string().required()
+    mediaType: Joi.string().required()
 }
 
 module.exports = {
-    postSchema
+    myListSchema
 }

@@ -1,15 +1,16 @@
 const router = require('express').Router();
-const { validatePost } = require('../middleware/media-middleware');
+const { validateMyListPost } = require('../middleware/media-middleware');
 const MediaService = require('../services/media-service');
 const { STATUS_HTTP } = require('../utils/constants');
 
-router.post("/", validatePost, async (req, res) => {
+router.post("/", validateMyListPost, async (req, res) => {
     const data = req["body"];
     try {
-        await MediaService.savetoMyList(data);
-        res.status(STATUS_HTTP.CREATED).end();
+        const response = await MediaService.savetoMyList(data);
+        
+        res.status(STATUS_HTTP.CREATED).json({ data: true });
     } catch (err) {
-        res.status(STATUS_HTTP.ERROR).json({ error }).end();
+        res.status(STATUS_HTTP.ERROR).json({ message: err });
     }
 })
 

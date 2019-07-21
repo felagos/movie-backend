@@ -1,9 +1,9 @@
-const { postSchema } = require('../schemas/media-schema');
+const { myListSchema } = require('../schemas/media-schema');
 const validate = require('../schemas/validate');
 const { STATUS_HTTP } = require('../utils/constants');
 
-const validatePost = (req, res, next) => {
-    const error = validate(req["body"], postSchema);
+const validateMyListPost = (req, res, next) => {
+    const error = validate(req["body"], myListSchema);
     if(error) {
         res.status(STATUS_HTTP.BAD_REQUEST).json({ error }).end();
     }
@@ -11,5 +11,5 @@ const validatePost = (req, res, next) => {
 }
 
 module.exports = {
-    validatePost
+    validateMyListPost
 }
