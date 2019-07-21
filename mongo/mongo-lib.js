@@ -53,6 +53,12 @@ class MongoLib {
         }).then(() => id);
     }
 
+    deleteQuery(collection, query) {
+        return this.connect().then(db => {
+            return db.collection(collection).deleteOne(query);
+        }).then(() => true);
+    }
+
     distinct(collection, attributte) {
         return this.connect().then(db => {
             return db.collection(collection).distinct(attributte)

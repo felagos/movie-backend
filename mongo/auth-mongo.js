@@ -11,7 +11,7 @@ class MediaMongo {
         const query = { email: email };
         const users = await this.mongoLib.getAll(this.collection, query);
 
-        if (users && users.length >= 0)
+        if (users && users.length > 0)
             return users[0];
 
         return null;
