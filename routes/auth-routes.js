@@ -9,7 +9,7 @@ router.post("/doLogin", validatLogin, async (req, res) => {
         const user = await AuthService.doLogin(email, password);
         res.status(STATUS_HTTP.OK).json({ data: user }).end();
     } catch (err) {
-        res.status(STATUS_HTTP.UNAUTHORIZED).json({ message: err }).end();
+        res.status(STATUS_HTTP.UNAUTHORIZED).json({ message: err.message }).end();
     }
 });
 
@@ -25,7 +25,7 @@ router.post("/doRegister", validateRegister, async (req, res) => {
             res.status(STATUS_HTTP.ERROR).json({ message: "El email se encuentra registrado" });
         }
     } catch (err) {
-        res.status(STATUS_HTTP.ERROR).json({ message: err });
+        res.status(STATUS_HTTP.ERROR).json({ message: err.message });
     }
 });
 

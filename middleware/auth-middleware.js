@@ -5,7 +5,7 @@ const { STATUS_HTTP } = require('../utils/constants');
 const validatLogin = (req, res, next) => {
     const error = validate(req["body"], loginSchema);
     if (error) {
-        return res.status(STATUS_HTTP.BAD_REQUEST).json({ error }).end();
+        return res.status(STATUS_HTTP.BAD_REQUEST).json({ message: "Error en los datos ingresados" }).end();
     }
     next();
 }

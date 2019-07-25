@@ -16,7 +16,7 @@ class AuthService {
 
             throw new Error("Email y/o contraseña incorrecta");
         } catch (err) {
-            throw new Error("Error");
+            throw new Error("Email y/o contraseña incorrecta");
         }
 
     }
